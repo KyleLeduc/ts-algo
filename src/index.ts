@@ -1,4 +1,4 @@
-import { sumOfIntervals, testData } from "./sumOfIntervals";
+import { sumOfIntervals, testData } from "./algorithms/sumOfIntervals";
 
 
 

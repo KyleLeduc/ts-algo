@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "tsc -w",
-    "dev": "nodemon build/keyedArrayFunction.js",
+    "dev": "nodemon build/index.js",
     "start:build": "tsc -w",
     "start:run": "npx nodemon ./build/index.js",
     "start": "concurrently npm:start:*"
