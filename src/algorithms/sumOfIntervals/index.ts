@@ -1,1 +1,1 @@
-export { sumOfIntervals, testData } from "./sumOfIntervals";
+export { sumOfIntervals, testData } from './sumOfIntervals'

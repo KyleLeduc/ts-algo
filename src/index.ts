@@ -1,5 +1,3 @@
-import { sumOfIntervals, testData } from "./algorithms/sumOfIntervals";
-
-
+import { sumOfIntervals, testData } from './algorithms/sumOfIntervals'
 
 console.log(sumOfIntervals(testData))
