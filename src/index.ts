@@ -11,5 +11,10 @@ const ms = new MergeSort()
 
 /** Quick Sort */
 import { quickSort, data as qsData } from './algorithms/quickSort'
-console.log('unsorted', qsData[0])
-console.log(quickSort(qsData[0]))
+// console.log('unsorted', qsData[0])
+// console.log(quickSort(qsData[0]))
+
+/** Radix Sort */
+import { radixSort } from './algorithms/radix'
+
+console.log(radixSort(qsData[0]))
