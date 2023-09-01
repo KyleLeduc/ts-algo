@@ -17,4 +17,8 @@ import { quickSort, data as qsData } from './algorithms/quickSort'
 /** Radix Sort */
 import { radixSort } from './algorithms/radix'
 
-console.log(radixSort(qsData[0]))
+// console.log(radixSort(qsData[0]))
+
+import { isValid, data as parensData } from './algorithms/validParens'
+
+console.log(isValid(parensData[1]))
