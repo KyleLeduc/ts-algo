@@ -21,4 +21,4 @@ import { radixSort } from './algorithms/radix'
 
 import { isValid, data as parensData } from './algorithms/validParens'
 
-console.log(isValid(parensData[1]))
+console.log(isValid(parensData[2]))

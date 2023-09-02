@@ -1,4 +1,4 @@
-export const data = ['{[()]}', '[]{}({)}']
+export const data = ['{[()]}', '[]{}({)}', 'function test(param) {if (param === true) return false}']
 
 export function isValid(s: string): boolean {
   const stack: string[] = []
