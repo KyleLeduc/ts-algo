@@ -1,5 +1,11 @@
+type Nullable<T> = T | null
+
+type NullableNode<T> = Nullable<Node<T>>
+
 export class SinglyLinkedList<T> {
-  constructor(private head?: Node<T>, private tail?: Node<T>) {}
+  private head: NullableNode<T> = null
+  private tail: NullableNode<T> = null
+  private length = 0
 
   push(value: T) {
     const newNode = new Node<T>(value)
@@ -12,18 +18,46 @@ export class SinglyLinkedList<T> {
       this.tail = newNode
     }
 
+    this.length++
     return this
+  }
+
+  pop() {
+    if (!this.head) return undefined
+    if (this.head === this.tail) {
+      const popped = this.head
+      this.head = null
+      this.tail = null
+      return popped
+    }
+
+    let curr = this.head
+
+    while (curr.next) {
+      if (!curr.next.next) {
+        const popped = curr.next
+        curr.next = null
+
+        this.length--
+        this.tail = curr
+
+        return popped
+      }
+      curr = curr.next
+    }
+
+    return curr
   }
 }
 
 class Node<T> {
-  constructor(public data: T, private _next: Node<T> | null = null) {}
+  constructor(public data: T, private _next: NullableNode<T> = null) {}
 
-  get next(): Node<T> | null {
+  get next(): NullableNode<T> {
     return this._next
   }
 
-  set next(node: Node<T>) {
+  set next(node: NullableNode<T>) {
     this._next = node
   }
 }

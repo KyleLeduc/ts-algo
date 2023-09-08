@@ -23,10 +23,15 @@ import { isValid, data as parensData } from './algorithms/validParens'
 
 // console.log(isValid(parensData[2]))
 
-
 import { SinglyLinkedList } from './dataStructures/singlyLinkedList'
 
-const list = new SinglyLinkedList()
+const list = new SinglyLinkedList<number>()
 list.push(10)
 list.push(20)
 console.log(list)
+
+console.log('popped', list.pop())
+console.log('list', list)
+
+console.log('popped', list.pop())
+console.log('popped', list.pop())
