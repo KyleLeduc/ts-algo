@@ -25,13 +25,19 @@ import { isValid, data as parensData } from './algorithms/validParens'
 
 import { SinglyLinkedList } from './dataStructures/singlyLinkedList'
 
-const list = new SinglyLinkedList<number>()
-list.push(10)
-list.push(20)
-console.log(list)
+// const list = new SinglyLinkedList<number>()
+// list.push(10)
+// list.push(20)
+// console.log(list)
 
-console.log('popped', list.pop())
-console.log('list', list)
+// console.log('popped', list.pop())
+// console.log('list', list)
 
-console.log('popped', list.pop())
-console.log('popped', list.pop())
+// console.log('popped', list.pop())
+// console.log('popped', list.pop())
+
+import { shuffleArr, data as shuffleData } from './algorithms/shuffleArray'
+
+for (const testData of shuffleData) {
+  console.log(shuffleArr(testData.arr, testData.num))
+}
