@@ -21,4 +21,12 @@ import { radixSort } from './algorithms/radix'
 
 import { isValid, data as parensData } from './algorithms/validParens'
 
-console.log(isValid(parensData[2]))
+// console.log(isValid(parensData[2]))
+
+
+import { SinglyLinkedList } from './dataStructures/singlyLinkedList'
+
+const list = new SinglyLinkedList()
+list.push(10)
+list.push(20)
+console.log(list)
