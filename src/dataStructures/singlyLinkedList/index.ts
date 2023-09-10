@@ -48,6 +48,29 @@ export class SinglyLinkedList<T> {
 
     return curr
   }
+
+  shift() {
+    if (!this.head) return undefined
+
+    const oldHead = this.head
+    this.head = this.head.next
+    this.length--
+    if (this.length === 0) {
+      this.tail = null
+    }
+
+    return oldHead
+  }
+
+  unshift(value: T) {
+    const newNode = new Node<T>(value)
+
+    newNode.next = this.head
+    this.head = newNode
+    if (this.length === 0) this.tail = newNode
+    this.length++
+  }
+
 }
 
 class Node<T> {
