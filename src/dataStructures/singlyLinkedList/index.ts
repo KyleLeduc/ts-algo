@@ -71,6 +71,17 @@ export class SinglyLinkedList<T> {
     this.length++
   }
 
+  get(index: number): NullableNode<T> | undefined {
+    if (index > this.length || index < 0) return undefined
+    let currentNode = this.head
+
+    while (index > 0) {
+      currentNode && (currentNode = currentNode.next)
+      index--
+    }
+
+    return currentNode
+  }
 }
 
 class Node<T> {

@@ -27,15 +27,14 @@ import { SinglyLinkedList } from './dataStructures/singlyLinkedList'
 
 const list = new SinglyLinkedList<number>()
 list.push(10)
-list.push(20)
-
 list.unshift(30)
-
-console.log(list)
-
+list.push(20)
 list.shift()
 
 console.log(list)
+console.log(list.get(0))
+console.log(list.get(-300))
+console.log(list.get(300))
 
 import { shuffleArr, data as shuffleData } from './algorithms/shuffleArray'
 
