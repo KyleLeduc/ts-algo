@@ -82,6 +82,18 @@ export class SinglyLinkedList<T> {
 
     return currentNode
   }
+
+  set(index: number, value: T) {
+    const node = this.get(index)
+
+    if (node) {
+      node.data = value
+
+      return true
+    }
+
+    return false
+  }
 }
 
 class Node<T> {
