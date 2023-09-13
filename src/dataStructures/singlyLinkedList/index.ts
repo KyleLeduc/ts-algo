@@ -94,6 +94,29 @@ export class SinglyLinkedList<T> {
 
     return false
   }
+
+  insert(atIndex: number, value: T) {
+    if (atIndex === 0) {
+      this.unshift(value)
+      this.length++
+
+      return true
+    }
+    const node = this.get(atIndex - 1)
+
+    if (node) {
+      const nextNode = node.next
+      const insertedNode = new Node(value)
+
+      node.next = insertedNode
+      insertedNode.next = nextNode
+      this.length++
+
+      return true
+    }
+
+    return false
+  }
 }
 
 class Node<T> {

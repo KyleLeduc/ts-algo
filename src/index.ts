@@ -36,9 +36,15 @@ list.shift()
 // console.log(list.get(-300))
 // console.log(list.get(300))
 
+// console.log(list)
+// console.log(list.set(0, 100))
+// console.log(list.set(100, 0))
+// console.log(list)
+
 console.log(list)
-console.log(list.set(0, 100))
-console.log(list.set(100, 0))
+console.log(list.insert(0, 1))
+console.log(list.insert(-3, 1000))
+console.log(list.insert(10, 1000))
 console.log(list)
 
 import { shuffleArr, data as shuffleData } from './algorithms/shuffleArray'
