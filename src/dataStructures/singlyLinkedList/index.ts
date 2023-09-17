@@ -131,7 +131,7 @@ export class SinglyLinkedList<T> {
   }
 }
 
-class Node<T> {
+export class Node<T> {
   constructor(public data: T, private _next: NullableNode<T> = null) {}
 
   get next(): NullableNode<T> {
