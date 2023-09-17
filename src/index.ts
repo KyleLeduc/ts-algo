@@ -25,11 +25,11 @@ import { isValid, data as parensData } from './algorithms/validParens'
 
 import { SinglyLinkedList } from './dataStructures/singlyLinkedList'
 
-const list = new SinglyLinkedList<number>()
-list.push(10)
-list.unshift(30)
-list.push(20)
-list.shift()
+// const list = new SinglyLinkedList<number>()
+// list.push(10)
+// list.unshift(30)
+// list.push(20)
+// list.shift()
 
 // console.log(list)
 // console.log(list.get(0))
@@ -41,14 +41,18 @@ list.shift()
 // console.log(list.set(100, 0))
 // console.log(list)
 
-console.log(list)
-console.log(list.insert(0, 1))
-console.log(list.insert(-3, 1000))
-console.log(list.insert(10, 1000))
-console.log(list)
+// console.log(list)
+// console.log(list.insert(0, 1))
+// console.log(list.insert(-3, 1000))
+// console.log(list.insert(10, 1000))
+// console.log(list)
 
 import { shuffleArr, data as shuffleData } from './algorithms/shuffleArray'
 
 // for (const testData of shuffleData) {
 //   console.log(shuffleArr(testData.arr, testData.num))
 // }
+
+import { mooresLeaderElection } from './algorithms/majorityElement'
+
+console.log(mooresLeaderElection([3,2,3,3,2,2]))
