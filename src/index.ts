@@ -29,6 +29,9 @@ import { shuffleArr, data as shuffleData } from './algorithms/shuffleArray'
 //   console.log(shuffleArr(testData.arr, testData.num))
 // }
 
-import { mooresLeaderElection } from './algorithms/majorityElement'
+// import { mooresLeaderElection } from './algorithms/majorityElement'
 
-console.log(mooresLeaderElection([3,2,3,3,2,2]))
+// console.log(mooresLeaderElection([3,2,3,3,2,2]))
+
+import { permuteUnique, uniquePermuteData } from './algorithms/permutations'
+permuteUnique(uniquePermuteData[0].input)
