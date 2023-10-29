@@ -129,6 +129,21 @@ export class SinglyLinkedList<T> {
 
     return false
   }
+
+  toArray() {
+    if (!this.#head) return
+
+    const result: T[] = []
+    let node: NullableNode<T> = this.#head
+
+    while (node) {
+      result.push(node.data)
+
+      node = node.next
+    }
+
+    return result
+  }
 }
 
 export class Node<T> {

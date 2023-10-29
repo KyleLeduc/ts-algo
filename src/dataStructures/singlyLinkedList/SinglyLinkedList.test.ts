@@ -8,6 +8,16 @@ describe('SinglyLinkedList', () => {
     linkedList = new SinglyLinkedList<number>()
   })
 
+  it('should print the list to an array', () => {
+    const expectedValue = [1, 2, 3]
+
+    for (const value of expectedValue) {
+      linkedList.push(value)
+    }
+
+    expect(linkedList.toArray()).toStrictEqual([1, 2, 3])
+  })
+
   it('should test unshift', () => {
     const initialValue = 0
     const expectedValue = 3
