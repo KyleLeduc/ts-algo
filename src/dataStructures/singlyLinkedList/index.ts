@@ -130,6 +130,28 @@ export class SinglyLinkedList<T> {
     return false
   }
 
+  reverse() {
+    let next
+    let prev = null
+    let node = this.head
+
+    this.#tail = this.head
+
+    while (node) {
+      next = node.next
+
+      node.next = prev
+
+      prev = node
+
+      node = next
+    }
+
+    this.#head = prev
+
+    return this
+  }
+
   toArray() {
     if (!this.#head) return
 

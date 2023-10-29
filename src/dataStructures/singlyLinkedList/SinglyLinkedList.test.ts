@@ -8,6 +8,20 @@ describe('SinglyLinkedList', () => {
     linkedList = new SinglyLinkedList<number>()
   })
 
+  it('should reverse the list', () => {
+    const inputValue = [1, 2, 3]
+    const expectedValue = [3, 2, 1]
+
+    for (const value of inputValue) {
+      linkedList.push(value)
+    }
+
+    const reversedList = linkedList.reverse()
+    const actualValue = reversedList.toArray()
+
+    expect(actualValue).toStrictEqual(expectedValue)
+  })
+
   it('should print the list to an array', () => {
     const expectedValue = [1, 2, 3]
 
