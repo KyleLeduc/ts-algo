@@ -1,6 +1,17 @@
-type Nullable<T> = T | null
+import type { Nullable } from '../utils'
 
 type NullableNode<T> = Nullable<Node<T>>
+export class Node<T> {
+  constructor(public data: T, private _next: NullableNode<T> = null) {}
+
+  get next(): NullableNode<T> {
+    return this._next
+  }
+
+  set next(node: NullableNode<T>) {
+    this._next = node
+  }
+}
 
 export class SinglyLinkedList<T> {
   #head: NullableNode<T> = null
@@ -165,17 +176,5 @@ export class SinglyLinkedList<T> {
     }
 
     return result
-  }
-}
-
-export class Node<T> {
-  constructor(public data: T, private _next: NullableNode<T> = null) {}
-
-  get next(): NullableNode<T> {
-    return this._next
-  }
-
-  set next(node: NullableNode<T>) {
-    this._next = node
   }
 }
