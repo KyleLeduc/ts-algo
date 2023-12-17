@@ -32,24 +32,31 @@ const wordNumberMap = [
   'nine'
 ]
 
-const wordNumRE = new RegExp(
-  `one|two|three|four|five|six|seven|eight|nine|(\\d)`,
-  'gi'
-)
+const wordNumRE = /one|two|three|four|five|six|seven|eight|nine|\d/gi
 
 export const findCalibrationValuesPt2 = (data: string[]) => {
   const result: number[] = []
 
   data.forEach((value) => {
-    let match, lastMatch
-    const firstMatch = wordNumRE.exec(value)
+    const matches = []
+    let match
 
-    while ((match = wordNumRE.exec(value)) !== null) {
-      lastMatch = match
+    // Loop through the string, checking for matches at each position
+    for (let i = 0; i < value.length; i++) {
+      // Reset the lastIndex to search from the current position
+      wordNumRE.lastIndex = i
+
+      // Attempt to find a match
+      match = wordNumRE.exec(value)
+
+      // If a match is found and it starts at the current position
+      if (match && match.index === i) {
+        matches.push(match[0])
+      }
     }
-    if (!firstMatch) return
-    if (!lastMatch) lastMatch = firstMatch
 
+    const first = convertMatch(matches[0])
+    let last = convertMatch(matches[matches.length - 1])
 
     if (last > 9) last = last % 10
 
