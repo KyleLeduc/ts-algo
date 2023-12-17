@@ -28,7 +28,7 @@ describe('aoc 2023 - day 1', () => {
   it('pt 2 - solve', () => {
     const answer = findCalibrationValuesPt2(day1Data)
 
-    expect(answer).toBe(undefined)
+    expect(answer).toBe(54925)
   })
 
   it('pt 2 - joined words', () => {
