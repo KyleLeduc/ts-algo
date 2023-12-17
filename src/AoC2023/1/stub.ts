@@ -9,8 +9,7 @@ abcone2threexyz
 xtwone3four
 4nineeightseven2
 zoneight234
-7pqrstsixteen
-1`
+7pqrstsixteen`
 
 export const data = `qzjggk1one
 two2seven7

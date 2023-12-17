@@ -50,8 +50,8 @@ export const findCalibrationValuesPt2 = (data: string[]) => {
     if (!firstMatch) return
     if (!lastMatch) lastMatch = firstMatch
 
-    const first = convertMatch(firstMatch[0])
-    const last = convertMatch(lastMatch[0])
+
+    if (last > 9) last = last % 10
 
     result.push(parseFloat('' + first + last))
   })
@@ -60,8 +60,7 @@ export const findCalibrationValuesPt2 = (data: string[]) => {
 }
 
 export const convertMatch = (match: string) => {
-  let result = parseFloat(match)
-  if (result > 9) result = parseFloat(match[0])
+  const result = parseInt(match, 10)
 
   return !isNaN(result) ? result : wordNumberMap.indexOf(match)
 }
