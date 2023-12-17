@@ -58,6 +58,6 @@ describe('aoc 2023 - day 2', () => {
   it('pt 2 - Answer', () => {
     const answer = totalGamePower(data)
 
-    console.log(answer)
+    expect(answer).toBe(72513)
   })
 })
