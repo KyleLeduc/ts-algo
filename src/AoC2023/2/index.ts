@@ -10,6 +10,18 @@ export const doWork = (data: string, testCase: GameData) => {
   return passingGames.reduce((prev, curr) => prev + curr, 0)
 }
 
+export const totalGamePower = (data: string) => {
+  const parsedData = processData(data)
+
+  return Object.values(parsedData).reduce((prev, curr) => {
+    const result = Object.values(curr).reduce((prev, curr) => {
+      return prev * curr
+    })
+
+    return prev + result
+  }, 0)
+}
+
 const testGames = (games: GamesHash, testCase: GameData): number[] => {
   const passingGames: number[] = []
 
