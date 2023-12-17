@@ -25,17 +25,30 @@ describe('aoc 2023 - day 1', () => {
     expect(answer).toBe(281)
   })
 
-  it.skip('pt 2 - solve', () => {
+  it('pt 2 - solve', () => {
     const answer = findCalibrationValuesPt2(day1Data)
 
     expect(answer).toBe(undefined)
   })
 
-  it.skip('pt 2 - joined words', () => {
-    const answer = findCalibrationValuesPt2(['twone'])
+  it('pt 2 - joined words', () => {
+    const answer = findCalibrationValuesPt2(['xtwone3four'])
 
-    expect(answer).toBe(21)
+    expect(answer).toBe(24)
   })
+
+  it('pt 2 - joined words 2', () => {
+    const answer = findCalibrationValuesPt2(['3xtwone'])
+
+    expect(answer).toBe(31)
+  })
+
+  it('pt 2 - joined words 2', () => {
+    const answer = findCalibrationValuesPt2(['zoneight234'])
+
+    expect(answer).toBe(14)
+  })
+
   it('pt 2 - single number', () => {
     const answer = findCalibrationValuesPt2(['two'])
 
