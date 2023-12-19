@@ -1,3 +1,5 @@
+import util from 'util'
+
 type ArrOptions = {
   maxLen: number
   count: number
@@ -21,13 +23,17 @@ export function generatePositiveNumArrs(
     const length = Math.ceil(Math.random() * maxLen) + 1
 
     // Generate the array
-    const arr = Array.from({ length }, () =>
-      Math.floor(Math.random() * maxNum)
-    )
+    const arr = Array.from({ length }, () => Math.floor(Math.random() * maxNum))
 
     // Add the array to the list of arrays
     arrays.push(arr)
   }
 
   return arrays
+}
+
+export const logFullObject = (obj: object) => {
+  console.log(
+    util.inspect(obj, { showHidden: false, depth: null, colors: true })
+  )
 }
