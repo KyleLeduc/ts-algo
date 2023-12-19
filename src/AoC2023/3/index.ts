@@ -8,62 +8,59 @@ const numberRE = /\d+/g
 export const doWork = (data: string) => {
   const parsedData = processData(data)
 
-  const validNums = validateData(parsedData)
+  const validNumbers = validateData(parsedData)
 
-  return validNums.reduce((prev, curr) => prev + curr, 0)
+  return validNumbers.reduce((prev, curr) => prev + curr, 0)
 }
 
 export const validateData = (data: ReturnType<typeof processData>) => {
   const validNumbers: number[] = []
 
-  data.forEach((line, i, arr) => {
+  data.forEach((line, currentLineIdx) => {
     const validLineNumbers: number[] = []
 
-    line.numberIndices.forEach((numberMatch) => {
-      const { startIdx, match: matchStr } = numberMatch
-      const maxSymbolPos = startIdx + matchStr.length
-      const minSymbolPos = startIdx === 0 ? 0 : startIdx - 1
+    for (let i = 0; i < line.numberIndices.length; i++) {
+      const numberMatch = line.numberIndices[i]
 
-      if (
-        line.symbolIndices.some(
-          (symbolIdx) => symbolIdx <= maxSymbolPos && symbolIdx >= minSymbolPos
-        )
-      ) {
-        // check current line
-        validLineNumbers.push(parseInt(matchStr))
-
-        return
+      if (isValidNumber(numberMatch, currentLineIdx, data)) {
+        validLineNumbers.push(parseInt(numberMatch.match))
       }
-
-      if (
-        i > 0 &&
-        arr[i - 1].symbolIndices.some(
-          (symbolIdx) => symbolIdx <= maxSymbolPos && symbolIdx >= minSymbolPos
-        )
-      ) {
-        // check previous line
-        validLineNumbers.push(parseInt(matchStr))
-
-        return
-      }
-
-      if (
-        i < arr.length - 1 &&
-        arr[i + 1].symbolIndices.some(
-          (symbolIdx) => symbolIdx <= maxSymbolPos && symbolIdx >= minSymbolPos
-        )
-      ) {
-        // check next line
-        validLineNumbers.push(parseInt(matchStr))
-
-        return
-      }
-    })
+    }
 
     validNumbers.push(...validLineNumbers)
   })
 
   return validNumbers
+}
+
+const isValidNumber = (
+  numberMatch: ReturnType<typeof indexNumbers>[number],
+  currentLineIdx: number,
+  arr: ReturnType<typeof processData>
+): boolean => {
+  const { startIdx, match: matchStr } = numberMatch
+  const maxSymbolPos = startIdx + matchStr.length
+  const minSymbolPos = startIdx === 0 ? 0 : startIdx - 1
+
+  const isCurrentLineValid = arr[currentLineIdx].symbolIndices.some(
+    (symbolIdx) => symbolIdx <= maxSymbolPos && symbolIdx >= minSymbolPos
+  )
+
+  const isPrevLineValid =
+    currentLineIdx > 0 &&
+    arr[currentLineIdx - 1].symbolIndices.some(
+      (symbolIdx) => symbolIdx <= maxSymbolPos && symbolIdx >= minSymbolPos
+    )
+
+  const isNextLineValid =
+    currentLineIdx < arr.length - 1 &&
+    arr[currentLineIdx + 1].symbolIndices.some(
+      (symbolIdx) => symbolIdx <= maxSymbolPos && symbolIdx >= minSymbolPos
+    )
+
+  if (isCurrentLineValid || isPrevLineValid || isNextLineValid) return true
+
+  return false
 }
 
 export const processData = (data: string) => {
