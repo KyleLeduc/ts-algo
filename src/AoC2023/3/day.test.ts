@@ -1,21 +1,26 @@
 import { describe, expect, it } from 'vitest'
-import { doWork, pt1Stub, pt2Stub, indexSymbols, indexNumbers } from '.'
-import util from 'util'
+import {
+  doWork,
+  data,
+  pt1Stub,
+  pt2Stub,
+  indexSymbols,
+  indexNumbers
+} from '.'
 
-const testString = '..&..132..*.123'
+const testString = '..&..132..*.1234'
 
 describe('aoc 2023 - Day 3', () => {
   it('pt 1 - stub', () => {
     const answer = doWork(pt1Stub)
 
-    answer.forEach((line, i) => {
-      console.log(`Line: ${i}`)
-      console.log(
-        util.inspect(line, { showHidden: false, depth: null, colors: true })
-      )
-    })
+    expect(answer).toBe(4361)
+  })
 
-    expect(true).toBe(true)
+  it('pt 1 - answer', () => {
+    const answer = doWork(data)
+
+    expect(answer).toBe(527364)
   })
 
   it('should return indices of symbols', () => {
@@ -35,14 +40,20 @@ describe('aoc 2023 - Day 3', () => {
     expect(answer).toMatchInlineSnapshot(`
       [
         {
-          "matchLength": 3,
+          "match": "132",
           "startIdx": 5,
         },
         {
-          "matchLength": 3,
+          "match": "1234",
           "startIdx": 12,
         },
       ]
     `)
+  })
+
+  it('should handle no match string', () => {
+    const answer = indexNumbers('..........')
+
+    expect(answer).toMatchInlineSnapshot('[]')
   })
 })
