@@ -20,4 +20,10 @@ describe('AoC 2023 - Day 4', () => {
 
     expect(answer).toBe(30)
   })
+
+  it('pt 2 - answer', () => {
+    const answer = doWork2(data)
+
+    expect(answer).toBe(12263631)
+  })
 })
