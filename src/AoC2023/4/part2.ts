@@ -22,7 +22,7 @@ const calculateNewCards = (hashedCards: ReturnType<typeof hashData>) => {
 
     for (let j = 1; j <= cardCount; j++) {
       !totalCards[i + j]
-        ? (totalCards[i + j] = 2)
+        ? (totalCards[i + j] = totalCards[i] + 1)
         : (totalCards[i + j] += totalCards[i])
     }
   })
