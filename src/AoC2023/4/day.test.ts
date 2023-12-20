@@ -1,11 +1,16 @@
 import { describe, expect, it } from 'vitest'
-import { doWork, pt1Stub, pt2Stub } from '.'
+import { doWork, data, pt1Stub, pt2Stub } from '.'
 
-describe('aoc 2023', () => {
-  it.skip('day 4 pt 1', () => {
+describe('AoC 2023 - Day 4', () => {
+  it('pt 1 - stub', () => {
     const answer = doWork(pt1Stub)
-    console.log(answer)
 
-    expect(answer).toBe(undefined)
+    expect(answer).toBe(13)
+  })
+
+  it('pt 1 - answer', () => {
+    const answer = doWork(data)
+
+    expect(answer).toBe(23673)
   })
 })
