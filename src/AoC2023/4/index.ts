@@ -19,7 +19,7 @@ export const doWork = (data: string) => {
   return calculatedScore
 }
 
-const processData = (data: string) => {
+export const processData = (data: string) => {
   const matches = Array.from(data.matchAll(splitDataRE))
 
   const transformedData = matches.map((match) => {
@@ -29,7 +29,7 @@ const processData = (data: string) => {
   return transformedData
 }
 
-const hashData = (data: ReturnType<typeof processData>) => {
+export const hashData = (data: ReturnType<typeof processData>) => {
   return data.map((card) => {
     const winningNumberHash = card.winningNumbers
       .split(' ')
