@@ -13,6 +13,17 @@ export const doWork = (data: string) => {
   return rangeMapper.findLowestLocation(seedArr)
 }
 
+export const doWork2 = (data: string) => {
+  const seedsStr = data.split('\n')[0].split(':')[1]
+  const seedArr = seedsStr
+    .trim()
+    .split(' ')
+    .map((seed) => parseInt(seed))
+  const rangeMapper = new RangeMapFactory(data)
+
+  return rangeMapper.findLowestLocationSeedRange(seedArr)
+}
+
 const mapExtractionRE = /(\d+(?:\s+\d+)*(\n\d+(?:\s+\d+)*)+)/g
 
 type Map = {
@@ -43,6 +54,26 @@ export class RangeMapFactory {
 
   findLowestLocation(seeds: number[]) {
     return Math.min(...seeds.map((seed) => this.mapSeed(seed)))
+  }
+
+  findLowestLocationSeedRange(seeds: number[]) {
+    const startTime = performance.now()
+    let lowestLocation: number | undefined
+    for (let i = 0; i < seeds.length; i += 2) {
+      const seedStart = seeds[i]
+      const seedRange = seeds[i + 1]
+
+      for (let j = seedStart; j < seedStart + seedRange; j++) {
+        const location = this.mapSeed(j)
+        if (!lowestLocation) lowestLocation = location
+        if (lowestLocation && location < lowestLocation)
+          lowestLocation = location
+      }
+    }
+
+    // 9:42 to run
+    console.log(`Finished in: ${(performance.now() - startTime) / 1000}`)
+    return lowestLocation
   }
 }
 

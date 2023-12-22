@@ -34,4 +34,9 @@ import { shuffleArr, data as shuffleData } from './algorithms/shuffleArray'
 // console.log(mooresLeaderElection([3,2,3,3,2,2]))
 
 import { permuteUnique, uniquePermuteData } from './algorithms/permutations'
-permuteUnique(uniquePermuteData[0].input)
+// permuteUnique(uniquePermuteData[0].input)
+
+import { doWork2 } from './AoC2023/5'
+import { data as day5Data, pt2Stub } from './AoC2023/5'
+
+console.log(doWork2(day5Data))
