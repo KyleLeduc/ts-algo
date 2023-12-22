@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest'
-import { doWork, data, RangeMap, pt1Stub, pt2Stub, RangeMapFactory } from '.'
-import { logFullObject } from '../../utils'
+import {
+  doWork,
+  data,
+  RangeMap,
+  pt1Stub,
+  pt2Stub,
+  RangeMapFactory,
+  doWork2
+} from '.'
 const testRange = `50 98 2
 52 50 48`
 
@@ -15,6 +22,19 @@ describe('AoC 2023 - Day 5', () => {
     const answer = doWork(data)
 
     expect(answer).toBe(111627841)
+  })
+
+  it('pt 2 - stub', () => {
+    const answer = doWork2(pt2Stub)
+
+    expect(answer).toBe(46)
+  })
+
+  it.skip('pt 2 - answer', () => {
+    // skipping because 4gb ram and 2 cores isn't enough to run this test
+    const answer = doWork2(data)
+
+    expect(answer).toBe(69323688)
   })
 
   it('RangeMapFactory - findLowestLocation', () => {
