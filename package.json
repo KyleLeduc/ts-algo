@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "tsc -w",
+    "build": "tsc",
     "dev": "nodemon build/index.js",
     "start:build": "tsc -w",
     "start:run": "npx nodemon ./build/index.js",
