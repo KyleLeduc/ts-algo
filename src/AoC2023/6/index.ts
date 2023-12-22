@@ -20,6 +20,16 @@ export const doWork = (data: string) => {
   return winConditions.reduce((prev, curr) => prev * curr)
 }
 
+export const doWork2 = (data: string) => {
+  const [time, distance] = data.split('\n').map((line) => {
+    const values = line.split(':')[1].trim()
+
+    return parseInt(values.split(/ +/g).join(''))
+  })
+
+  return calculateWinConditions(time, distance)
+}
+
 const calculateWinConditions = (time: number, distance: number) => {
   const startTime = Math.floor(time / 2)
   let holdTime = startTime
