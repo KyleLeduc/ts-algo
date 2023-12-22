@@ -39,4 +39,8 @@ import { permuteUnique, uniquePermuteData } from './algorithms/permutations'
 import { doWork2 } from './AoC2023/5'
 import { data as day5Data, pt2Stub } from './AoC2023/5'
 
-console.log(doWork2(day5Data))
+// console.log(doWork2(day5Data))
+
+import { doWork, pt1Stub as day6pt1 } from './AoC2023/6'
+
+console.log(doWork(day6pt1))
