@@ -6,9 +6,6 @@ export const longestSubString = (firstStr: string, secondStr: string) => {
     remainingSecondStr: string,
     matches: string[] = []
   ) => {
-    console.log('first: ', remainingFirstStr)
-    console.log('second: ', remainingSecondStr)
-    console.log('matches:', matches)
     if (remainingFirstStr.length <= 0 || remainingSecondStr.length <= 0) {
       if (matches.length === 0) return ''
       return matches.join('')
@@ -46,3 +43,18 @@ export const longestSubString = (firstStr: string, secondStr: string) => {
 
   return recurse(firstStr, secondStr)
 }
+
+
+
+// iterate over firstStr
+// if no match, move to secondStr++
+// if match, add letter to firstStr[n] matches arr & pass to firstStr++ recursion
+// // firstStr now on next letter w/ first match
+
+
+// once no match across secondStr, move to firstStr++
+// if matches.length, check global longest match, if longer replacefee
+
+
+// AABCXY
+// XYZ
