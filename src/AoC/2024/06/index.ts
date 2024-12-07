@@ -73,6 +73,111 @@ const partOne = (map: string[]): number => {
   return visited.size
 }
 
+const partTwo = (data: string): number => {
+  const mapStrings = data.split('\n')
+  const rows = mapStrings.length
+  const cols = mapStrings[0].length
+
+  // Parse the map into a 2D array
+  const map = mapStrings.map((row) => row.split(''))
+
+  let guardPosition: Position | undefined
+  let guardDirection: Direction | undefined
+
+  // Find the initial position and direction of the guard
+  const directionChars: Direction[] = ['^', '>', 'v', '<']
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const cell = map[row][col]
+      if (directionChars.includes(cell as Direction)) {
+        guardPosition = { row, col }
+        guardDirection = cell as Direction
+        // Replace guard's starting position with empty space
+        map[row][col] = '.'
+        break
+      }
+    }
+    if (guardPosition) break
+  }
+
+  if (!guardPosition || !guardDirection) {
+    throw new Error('Guard not found on the map')
+  }
+
+  const positionsToTest: Position[] = []
+
+  // Collect all possible positions to place an obstruction
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const cell = map[row][col]
+      if (
+        cell === '.' &&
+        !(row === guardPosition.row && col === guardPosition.col)
+      ) {
+        positionsToTest.push({ row, col })
+      }
+    }
+  }
+
+  let validObstructionPositions = 0
+
+  for (const obstruction of positionsToTest) {
+    // Copy the map to modify it
+    const mapCopy = map.map((row) => [...row])
+
+    // Place the obstruction
+    mapCopy[obstruction.row][obstruction.col] = '#'
+
+    // Simulate the guard's movement
+    const visitedStates = new Set<string>()
+    let currentPosition = { ...guardPosition }
+    let currentDirection = guardDirection
+
+    let isLoop = false
+
+    while (true) {
+      const stateKey = `${currentPosition.row},${currentPosition.col},${currentDirection}`
+      if (visitedStates.has(stateKey)) {
+        // Loop detected
+        isLoop = true
+        break
+      }
+      visitedStates.add(stateKey)
+
+      const nextPosition: Position = {
+        row: currentPosition.row + directionDeltas[currentDirection].row,
+        col: currentPosition.col + directionDeltas[currentDirection].col
+      }
+
+      if (
+        nextPosition.row < 0 ||
+        nextPosition.row >= rows ||
+        nextPosition.col < 0 ||
+        nextPosition.col >= cols
+      ) {
+        // Guard has left the map
+        break
+      }
+
+      const nextCell = mapCopy[nextPosition.row][nextPosition.col]
+
+      if (nextCell === '#') {
+        // Obstacle ahead, turn right
+        currentDirection = turnRight(currentDirection)
+      } else {
+        // Move forward
+        currentPosition = nextPosition
+      }
+    }
+
+    if (isLoop) {
+      validObstructionPositions++
+    }
+  }
+
+  return validObstructionPositions
+}
+
 type Direction = '^' | '>' | 'v' | '<'
 
 interface Position {
@@ -90,8 +195,4 @@ const directionDeltas: Record<Direction, Position> = {
 const turnRight = (direction: Direction): Direction => {
   const order: Direction[] = ['^', '>', 'v', '<']
   return order[(order.indexOf(direction) + 1) % 4]
-}
-
-const partTwo = (data: string): number => {
-  return 0
 }
