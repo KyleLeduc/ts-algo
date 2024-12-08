@@ -1,8 +1,6 @@
 export { data, pt1Stub, pt2Stub } from './stubs'
 
 export const doWork = (data: string, dayOne = true) => {
-  console.log(data)
-
   if (dayOne) {
     return partOne(data)
   } else {
